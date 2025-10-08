@@ -1,8 +1,8 @@
- public class Lw1 {
+  class Lw1 {
 
 public static void main(String[] args) 
 {
     System.out.println("Hello, World!");
- System.out.println("Hello, World!");
+ System.out.println("Hell");
     }
 }
