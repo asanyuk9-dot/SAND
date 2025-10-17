@@ -103,7 +103,7 @@ class Player {
     }
 }
 
-public class TicTacToeGame {
+public class Lab3 {
     public static void main(String[] args) {
         GameBoard board = new GameBoard();
 
