@@ -1,109 +1,9 @@
 
-    import java.util.Scanner;
-
-class GameBoard {
-    private char[][] board;
-
-    public GameBoard() {
-        board = new char[3][3];
-        initializeBoard();
-    }
-
-    public void initializeBoard() {
-        for (int i=0; i<3; i++) {
-            for (int j=0; j<3; j++) {
-                board[i][j] = ' ';
-            }
-        }
-    }
-
-    public void printBoard() {
-        System.out.println("-------------");
-        for (int i=0; i<3; i++) {
-            System.out.print("| ");
-            for (int j=0; j<3; j++) {
-                System.out.print(board[i][j] + " | ");
-            }
-            System.out.println();
-            System.out.println("-------------");
-        }
-    }
-
-    public boolean setMove(int row, int col, char symbol) {
-        if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ') {
-            board[row][col] = symbol;
-            return true;
-        }
-        return false;
-    }
-
-    public boolean checkWin(char symbol) {
-        // Перевірка рядків
-        for (int i=0; i<3; i++) {
-            if (board[i][0] == symbol && board[i][1] == symbol && board[i][2] == symbol) {
-                return true;
-            }
-        }
-        // Перевірка стовпців
-        for (int j=0; j<3; j++) {
-            if (board[0][j] == symbol && board[1][j] == symbol && board[2][j] == symbol) {
-                return true;
-            }
-        }
-        // Перевірка діагоналей
-        if (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol) {
-            return true;
-        }
-        if (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isFull() {
-        for (int i=0; i<3; i++) {
-            for (int j=0; j<3; j++) {
-                if (board[i][j] == ' ') {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-}
-
-class Player {
-    private String name;
-    private char symbol;
-    private Scanner scanner;
-
-    public Player(String name, char symbol) {
-        this.name = name;
-        this.symbol = symbol;
-        scanner = new Scanner(System.in);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public int[] makeMove() {
-        System.out.println(name + ", введіть номер рядка та стовпця (в діапазоні 0-2): ");
-        int row = scanner.nextInt();
-        int col = scanner.nextInt();
-        return new int[] { row, col };
-    }
-
-    public void printInfo() {
-        System.out.println("Гравець: " + name + " (" + symbol + ")");
-    }
-}
-
-public class Lab3 {
+// Імпорт класу Scanner для зчитування вводу користувача
+//Отримання ведення від користувача
+import java.util.Scanner; 
+public class Lab3 
+{
     public static void main(String[] args) {
         GameBoard board = new GameBoard();
 
@@ -139,4 +39,111 @@ public class Lab3 {
         }
     }
 }
+
+class GameBoard {
+    private char[][] field;
+
+    public GameBoard() {
+        field = new char[3][3];
+        for (int i=0; i<3; i++) 
+        {
+            for (int j=0; j<3; j++) 
+            {
+                field[i][j] = ' ';
+            }
+        }
+    }
+    // Вивід ігрового поля на екран
+    public void printBoard() {
+        System.out.println();
+        System.out.println("Поточний стан ігрового поля:");
+        for (int i = 0; i < 3; i++) {
+        // Вивід рядка з символами через пробіли або вертикальні лінії
+        for (int j = 0; j < 3; j++) {
+            System.out.print(field[i][j]);
+            if (j < 2) System.out.print("  | "); // вертикальні роздільники між комірками
+        }
+        System.out.println();
+        if (i < 2) {
+            System.out.println("------------"); // горизонтальні лінії між рядками
+        }
+    }
+    System.out.println();
+    }
+    // Зміна стану ігрового поля (ставимо фігуру на поле)
+    public boolean setMove(int row, int col, char symbol) {
+        if (row >= 0 && row < 3 && col >= 0 && col < 3 && field[row][col] == ' ') {
+            field[row][col] = symbol;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkWin(char symbol) {
+        // Перевірка рядків
+        for (int i=0; i<3; i++) {
+            if (field[i][0] == symbol && field[i][1] == symbol && field[i][2] == symbol) {
+                return true;
+            }
+        }
+        // Перевірка стовпців
+        for (int j=0; j<3; j++) {
+            if (field[0][j] == symbol && field[1][j] == symbol && field[2][j] == symbol) {
+                return true;
+            }
+        }
+        // Перевірка діагоналей
+        if (field[0][0] == symbol && field[1][1] == symbol && field[2][2] == symbol) {
+            return true;
+        }
+        if (field[0][2] == symbol && field[1][1] == symbol && field[2][0] == symbol) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isFull() {
+        for (int i=0; i<3; i++) {
+            for (int j=0; j<3; j++) {
+                if (field[i][j] == ' ') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+
+class Player {
+    private String name;
+    private char symbol;
+    private Scanner scanner;
+
+    public Player(String name, char symbol) {
+        this.name = name;
+        this.symbol = symbol;
+        scanner = new Scanner(System.in);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public char getSymbol() {
+        return symbol;
+    }
+
+    public int[] makeMove() {
+        System.out.println(name + ", введіть номер рядка та стовпця (в діапазоні 1-3): ");
+        int row = scanner.nextInt()-1;
+        int col = scanner.nextInt()-1;
+        return new int[] { row, col };
+    }
+
+    public void printInfo() {
+        System.out.println("Гравець: " + name + " (" + symbol + ")");
+    }
+}
+
+
 
