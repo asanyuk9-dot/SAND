@@ -2,7 +2,7 @@ public class Lab2
 {
     public static void main(String[] args) 
     {
-        int lvl = 3;
+        int lvl = 11;
         int rows = 3;
         int cols = 4;
         Lab2 lab = new Lab2();
