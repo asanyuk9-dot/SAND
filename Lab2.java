@@ -36,15 +36,19 @@ public class Lab2
     {
         int[][] array = new int[rows][cols];
         int value = 0;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        for (int i = 0; i < rows; i++) 
+        {
+            for (int j = 0; j < cols; j++) 
+            {
                 array[i][j] = value;
                 value += 3;
             }
         }
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        for (int i = 0; i < rows; i++) 
+        {
+            for (int j = 0; j < cols; j++) 
+            {
                 System.out.print(array[i][j] + "\t");
             }
             System.out.println();
