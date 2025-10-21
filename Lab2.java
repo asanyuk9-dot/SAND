@@ -1,9 +1,31 @@
 public class Lab2 
 {
+    public static void main(String[] args) 
+    {
+        int lvl = 3;
+        int rows = 3;
+        int cols = 4;
+        Lab2 lab = new Lab2();
+        
+        // Вивід ялинки з 6 рівнів
+        lab.printTree(lvl);
+
+        System.out.println();
+
+        // Вивід масиву 3 на 4
+        lab.createAndPrintArray(rows, cols);
+    }
     // вивід ялинки
-    public void printTree(int levels) {
-        for (int i = 1; i <= levels; i++) {
-            for (int j = 0; j < i; j++) {
+    public void printTree(int levels) 
+    {
+        for (int i = 1; i <= levels; i++) 
+        {
+            for (int j = 0; j < levels - i; j++) 
+            {
+                System.out.print(" ");
+            }
+            for (int k = 0; k < (2 * i - 1); k++) 
+            {
                 System.out.print("*");
             }
             System.out.println();
@@ -28,18 +50,4 @@ public class Lab2
             System.out.println();
         }
     }
-
-    public static void main(String[] args) 
-    {
-        Lab2 lab = new Lab2();
-        
-        // Вивід ялинки з 6 рівнів
-        lab.printTree(8);
-
-        System.out.println();
-
-        // Вивід масиву 3 на 4
-        lab.createAndPrintArray(3, 4);
-    }
 }
-
