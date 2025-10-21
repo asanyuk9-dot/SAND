@@ -1,6 +1,6 @@
 
 // Імпорт класу Scanner для зчитування вводу користувача
-//Отримання ведення від користувача
+//для введення з клавіатури
 import java.util.Scanner; 
 public class Lab3 
 {
@@ -10,7 +10,7 @@ public class Lab3
         Player player1 = new Player("Гравець 1", 'X');
         Player player2 = new Player("Гравець 2", 'O');
         Player currentPlayer = player1;
-        while (true) 
+        while (true) //Поточний стан ігрового поля.
         {
             board.printBoard();
             currentPlayer.printInfo();
@@ -51,14 +51,15 @@ class GameBoard
             }
         }
     }
-    // Вивід ігрового поля на екран
+    // Вивід ігрового поля на екран 
+    // текучий стан ігрового поля
     public void printBoard() 
     {
         System.out.println();
         System.out.println("Поточний стан ігрового поля:");
         for (int i = 0; i < 3; i++) 
         {
-        // Вивід рядка з символами через пробіли або вертикальні лінії
+        // Вивід рядка з символами  
             for (int j = 0; j < 3; j++) 
             {
                 System.out.print(field[i][j]);
@@ -82,6 +83,7 @@ class GameBoard
         }
         return false;
     }
+    //Перевірка чи є переможець
     public boolean checkWin(char symbol) 
     {
         // Перевірка рядків
@@ -109,6 +111,7 @@ class GameBoard
         }
         return false;
     }
+    //Перевірка чи заповнене поле
     public boolean isFull() 
     {
         for (int i=0; i<3; i++) 
