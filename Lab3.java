@@ -40,7 +40,8 @@ public class Lab3
 
 class GameBoard 
 {
-    private char[][] field;
+    private char[][] field;//зберігає стан ігрового поля
+    //створення ігрового поля
     public GameBoard() {
         field = new char[3][3];
         for (int i=0; i<3; i++) 
@@ -133,20 +134,24 @@ class Player
     private String name;
     private char symbol;
     private Scanner scanner;
+    // Конструктор гравця
     public Player(String name, char symbol) 
     {
         this.name = name;
         this.symbol = symbol;
         scanner = new Scanner(System.in);
     }
+    // Отримання імені гравця
     public String getName() 
     {
         return name;
     }
+    // Отримання символу гравця
     public char getSymbol() 
     {
         return symbol;
     }
+    // Зчитування ходу гравця
     public int[] makeMove() 
     {
         System.out.println(name + ", введіть номер рядка та стовпця (в діапазоні 1-3): ");
@@ -154,6 +159,7 @@ class Player
         int col = scanner.nextInt()-1;
         return new int[] { row, col };
     }
+    // Вивід інформації про гравця
     public void printInfo() 
     {
         System.out.println("Гравець: " + name + " (" + symbol + ")");
