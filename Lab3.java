@@ -6,9 +6,34 @@ public class Lab3
 {
     public static void main(String[] args) 
     {
+        Scanner scanner = new Scanner(System.in);
+    Db db = new Db();
+
+    Player player1 = null;
+    Player player2 = null;
+    for (int i = 1; i <= 2; i++) {
+        while (true) {
+            System.out.print("Введіть логін гравця " + i + ": ");
+            String login = scanner.nextLine();
+            System.out.print("Введіть пароль гравця " + i + ": ");
+            String pass = scanner.nextLine();
+
+            if (db.isUserExists(login)) {
+                if (db.isUserPasswordCorrect(login, pass)) {
+                    if (i == 1) player1 = new Player(login, 'X');
+                    else player2 = new Player(login, 'O');
+                    break;
+                } else {
+                    System.out.println("Невірний пароль. Спробуйте ще раз.");
+                }
+            } else {
+                System.out.println("Такого користувача немає. Спробуйте ще раз.");
+            }
+        }
+    }
+
+    db.close();
         GameBoard board = new GameBoard();
-        Player player1 = new Player("Гравець 1", 'X');
-        Player player2 = new Player("Гравець 2", 'O');
         Player currentPlayer = player1;
         while (true) //Поточний стан ігрового поля.
         {
